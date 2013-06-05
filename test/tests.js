@@ -184,8 +184,8 @@ describe('Validation Methods', function(){
   });
 
   it('should validate the if a value matches another value', function(){
-    var test = methods.matches('foo');
-    test('bar', { foo: 'bar' }).should.be.true;
+    var test = methods.matches('foo');
+    test('bar', { foo: 'bar' }).should.be.true;
     test('bar', { foo: 'foo' }).should.be.false;
-  });
+   });
 });
