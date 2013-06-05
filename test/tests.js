@@ -65,7 +65,127 @@ describe('Validation Methods', function(){
   });
 
   it('should validate strings', function(){
-
+    methods.string('1').should.be.true;
+    methods.string(1).should.be.false;
+    methods.string(true).should.be.false;
+    chai.assert( methods.string('') === undefined );
+    chai.assert( methods.string(null) === undefined );
+    chai.assert( methods.string(undefined) === undefined );
   });
 
+  it('should validate a number', function(){
+    methods.number('string').should.be.false;
+    methods.number('1').should.be.true;
+    methods.number(1).should.be.true;
+    methods.number(true).should.be.false;
+    chai.assert( methods.number('') === undefined );
+    chai.assert( methods.number(null) === undefined );
+    chai.assert( methods.number(undefined) === undefined );
+  });
+
+  it('should validate an array', function(){
+    methods.array(['1', 2]).should.be.true;
+    methods.array('1').should.be.false;
+    methods.array(1).should.be.false;
+    methods.array(true).should.be.false;
+    chai.assert( methods.array('') === undefined );
+    chai.assert( methods.array(null) === undefined );
+    chai.assert( methods.array(undefined) === undefined );
+  });
+
+  it('should validate a date', function(){
+    methods.date(new Date()).should.be.true;
+    methods.date('12th June').should.be.false;
+    methods.date(12).should.be.true;
+    methods.boolean('', null, undefined).should.be.false;
+  });
+
+  it('should validate a boolean', function(){
+    methods.boolean(true).should.be.true;
+    methods.boolean(false).should.be.true;
+    methods.boolean('1').should.be.false;
+    methods.boolean(12).should.be.false;
+    methods.boolean('', null, undefined).should.be.false;
+  });
+
+  it('should validate if one value is below another value', function(){
+    methods.max(1,2).should.be.true;
+    methods.max(2,1).should.be.false;
+    methods.max('1','2').should.be.true;
+    methods.max('2','1').should.be.false;
+    methods.max(1,'2').should.be.true;
+    methods.max(2,'1').should.be.false;
+    methods.max(1, null).should.be.false;
+    methods.max('1', null).should.be.false;
+    chai.assert( methods.max(null) === undefined );
+    chai.assert( methods.max(undefined) === undefined );
+  });
+
+  it('should validate if one value is a at least another value', function(){
+    methods.min(1,1).should.be.true;
+    methods.min(2,1).should.be.true;
+    methods.min(1,2).should.be.false;
+    methods.min('1','1').should.be.true;
+    methods.min('2','1').should.be.true;
+    methods.min('1','2').should.be.false;
+    methods.min(1,'1').should.be.true;
+    methods.min(2,'1').should.be.true;
+    methods.min(1,'2').should.be.false;
+    methods.min(1,'1').should.be.true;
+    methods.min(2,'1').should.be.true;
+    methods.min(1,'2').should.be.false;
+    methods.min(1,null).should.be.true;
+    methods.min('1',null).should.be.true;
+    chai.assert( methods.min(null) === undefined );
+    chai.assert( methods.min(undefined) === undefined );
+  });
+
+  it('should validate the length of a string or array', function(){
+    methods.length([1, '2'], 1).should.be.false;
+    methods.length([1,2,3], 3).should.be.true;
+    methods.length([1], 1).should.be.true;
+    methods.length('three', 3).should.be.false;
+    methods.length('four', 4).should.be.true;
+  });
+
+  it('should validate the if a length of a string or array is equal to or greater than a value', function(){
+    methods.minlength([1], 0).should.be.true;
+    methods.minlength([1], 1).should.be.true;
+    methods.minlength([1], 2).should.be.false;
+    methods.minlength("one", 3).should.be.true;
+    methods.minlength("one", 4).should.be.false;
+  });
+
+  it('should validate the if a length of a string or array is equal to or less than a value', function(){
+    methods.maxlength([1], 1).should.be.true;
+    methods.maxlength([1], 2).should.be.true;
+    methods.maxlength([1, 2], 1).should.be.false;
+    methods.maxlength("1", 3).should.be.true;
+    methods.maxlength("one", 3).should.be.true;
+    methods.maxlength("three", 3).should.be.false;
+    methods.maxlength("4", 3).should.be.true;
+  });
+
+  it('should validate the if string or number is within range of a value', function(){
+    methods.range(5, {"from": 1, "to": 10}).should.be.true;
+    methods.range(5, {"from": 1, "to": 4}).should.be.false;
+    methods.range(5, {"from": 6, "to": 10}).should.be.false;
+    methods.range('5', {"from": 1, "to": 10}).should.be.true;
+    methods.range('5', {"from": 1, "to": 4}).should.be.false;
+    methods.range('5', {"from": 6, "to": 10}).should.be.false;
+    methods.range("five", {"from": 1, "to": 10}).should.be.false;
+  });
+
+  it('should validate the if a value is found in an array', function(){
+    methods.in(1, [1,2,3]).should.be.true;
+    methods.in("one", [1,2,3]).should.be.false;
+    methods.in(1, ['one', 'two', 'three']).should.be.false;
+    methods.in("one", ['one', 'two', 'three']).should.be.true;
+  });
+
+  it('should validate the if a value matches another value', function(){
+    var test = methods.matches('foo');
+    test('bar', { foo: 'bar' }).should.be.true;
+    test('bar', { foo: 'foo' }).should.be.false;
+  });
 });

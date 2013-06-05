@@ -101,7 +101,7 @@ exports.string = function(val) {
  */
 exports.number = function(val) {
   if(val) {
-    if( type(val) === 'string' && !isNaN(parseFloat(val) ) {
+    if( type(val) === 'string' && !isNaN(parseFloat(val)) ) {
       return true;
     }
     else {
@@ -181,7 +181,7 @@ exports.length = function(val, length) {
 };
 
 /**
- * Check the minimum length of a number or string
+ * Check the minimum length of a string or array
  * @param  {String|Array} val
  * @param  {Number} length
  * @return {Boolean}
@@ -227,6 +227,8 @@ exports['in'] = function(val, values) {
  * @param   {Object} attributes All of the data
  * @return {Boolean}
  */
-exports.matches = function(val, attr, data) {
-  return val === data[attr];
+exports.matches = function(attr) {
+  return function(val, data) {
+    return val === data[attr];    
+  }
 };
