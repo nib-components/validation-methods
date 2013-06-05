@@ -187,5 +187,5 @@ describe('Validation Methods', function(){
     var test = methods.matches('foo');
     test('bar', { foo: 'bar' }).should.be.true;
     test('bar', { foo: 'foo' }).should.be.false;
-   });
+  });
 });
