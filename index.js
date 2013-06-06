@@ -150,22 +150,26 @@ exports.boolean = function(val) {
  * @param  {Number} num Maximum value
  * @return {Boolean}
  */
-exports.max = function(val, num) {
-  if(val != null) {
-    return val && val <= num;
-  }
+exports.max = function(num) {
+  return function(val, data) {
+    if(exports.number(val)) {
+      return num && num <= val;
+    }
+  };
 };
 
 /**
- * Check if a number is a at least num
+ * Check if a val is a at least num
  * @param  {String|Number} val
  * @param  {Number} num
  * @return {Boolean}
  */
-exports.min = function(val, num) {
-  if(val != null) {
-    return val && val >= num;
-  }
+exports.min = function(num) {
+  return function(val, data) {
+    if(exports.number(val)) {
+      return num && num >= val;
+    }
+  };
 };
 
 /**
@@ -174,11 +178,14 @@ exports.min = function(val, num) {
  * @param  {Number} length
  * @return {Boolean}
  */
-exports.length = function(val, length) {
-  if(val != null) {
-    return val && val.length && val.length === Number(length);
-  }
+exports.length = function(val) {
+  return function(length, data) {
+    if(val) {
+      return val && val.length && val.length === Number(length);
+    }
+  };
 };
+
 
 /**
  * Check the minimum length of a string or array
@@ -186,8 +193,12 @@ exports.length = function(val, length) {
  * @param  {Number} length
  * @return {Boolean}
  */
-exports.minlength = function(val, length) {
-  return val && val.length && val.length >= length;
+exports.minlength = function(length) {
+  return function(val, data) {
+    if(val) {
+      return val && val.length && val.length >= length;
+    }
+  };
 };
 
 /**
@@ -196,8 +207,12 @@ exports.minlength = function(val, length) {
  * @param  {Number} length
  * @return {Boolean}
  */
-exports.maxlength = function(val, length) {
-  return val && val.length && val.length <= length;
+exports.maxlength = function(length) {
+  return function(val, data) {
+    if(val) {
+      return val && val.length && val.length <= length;
+    }
+  };
 };
 
 /**
@@ -206,8 +221,12 @@ exports.maxlength = function(val, length) {
  * @param  {Object} options Requires a from and to
  * @return {Boolean}
  */
-exports.range = function(val, options) {
-  return val && (options.from <= val && val <= options.to);
+exports.range = function(from, to) {
+  return function(val, data) {
+    if(val) {
+      return val && (from <= val && val <= to);
+    }
+  };
 };
 
 /**
@@ -216,8 +235,12 @@ exports.range = function(val, options) {
  * @param  {Array} values
  * @return {Boolean}
  */
-exports['in'] = function(val, values) {
-  return values.indexOf(val) > -1;
+exports['in'] = function(values) {
+  return function(val, data) {
+    if(val) {
+      return values.indexOf(val) > -1;
+    }
+  };
 };
 
 /**
