@@ -251,7 +251,7 @@ exports['in'] = function(values) {
  * @return {Boolean}
  */
 exports.matches = function(attr) {
-  return function(val, data) {
-    return val === data[attr];    
-  }
+  return function(val, data) {
+    return val === data[attr];
+  };
 };
