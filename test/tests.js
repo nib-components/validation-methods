@@ -206,4 +206,13 @@ describe('Validation Methods', function(){
     fn('', { foo: 'bar' }).should.be.false;
     fn(undefined, { foo: 'bar' }).should.be.false;
   });
+
+  it('should validate if a value is made up of only numbers or not', function(){
+    methods.numbersOnly('123456789').should.be.true;
+    methods.numbersOnly('123456789String').should.be.false;
+    methods.numbersOnly(1).should.be.true;
+    methods.numbersOnly('string').should.be.false;
+    methods.numbersOnly('').should.be.false;
+    methods.numbersOnly(undefined).should.be.false;
+  });
 });

@@ -16,7 +16,8 @@ var patterns = {
   url: /^(https?:\/\/)?([\da-z\.\-]+)\.([a-z\.]{2,6})([\/\w \.\-]*)*\/?$/,
   alphanumeric: /^\w+$/,
   hex: /^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/,
-  dateofbirth: /^\d{1,2}\/\d{1,2}\/\d{4}$/
+  dateofbirth: /^\d{1,2}\/\d{1,2}\/\d{4}$/,
+  numbersOnly: /^\d+$/
 };
 
 /**
@@ -254,4 +255,13 @@ exports.matches = function(attr) {
   return function(val, data) {
     return val === data[attr];
   };
+};
+
+/**
+ * Check if a value is only numbers
+ * @param  {string} val
+ * @return {boolean} return true if value is made up of numbers
+ */
+exports.numbersOnly = function(val) {
+  return patterns.numbersOnly.test(val);
 };
