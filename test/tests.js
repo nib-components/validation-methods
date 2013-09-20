@@ -42,6 +42,7 @@ describe('Validation Methods', function(){
   it('should validate alphanumeric', function(){
     methods.alphanumeric('a').should.be.true;
     methods.alphanumeric('1').should.be.true;
+    methods.alphanumeric('_1').should.be.false;
     methods.alphanumeric(true).should.be.false;
     chai.assert( methods.alphanumeric('') === undefined);
     chai.assert( methods.alphanumeric(null) === undefined);

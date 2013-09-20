@@ -14,7 +14,7 @@ var equals = require('equals');
 var patterns = {
   email: /^([a-zA-Z0-9_\.\-\+]+)@([\da-z\.\-]+)\.([a-z\.]{2,6})$/,
   url: /^(https?:\/\/)?([\da-z\.\-]+)\.([a-z\.]{2,6})([\/\w \.\-]*)*\/?$/,
-  alphanumeric: /^\w+$/,
+  alphanumeric: /^[A-Za-z0-9]+$/,
   hex: /^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/,
   dateofbirth: /^\d{1,2}\/\d{1,2}\/\d{4}$/,
   numbersOnly: /^\d+$/
