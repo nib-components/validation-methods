@@ -178,10 +178,10 @@ exports.min = function(num) {
  * @param  {Number} length
  * @return {Boolean}
  */
-exports.length = function(val) {
-  return function(length, data) {
+exports.length = function(length) {
+  return function(val, data) {
     if(val) {
-      return val && val.length && val.length === Number(length);
+      return val.length && val.length === length;
     }
   };
 };

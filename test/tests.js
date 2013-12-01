@@ -140,15 +140,14 @@ describe('Validation Methods', function(){
   });
 
   it('should validate the length of a string or array', function(){
-    var fn1 = methods.length([1, '2']);
-    var fn2 = methods.length("eggplant");
-    fn1(1).should.be.false;
-    fn1(2).should.be.true;
-    fn2(8).should.be.true;
-    fn2(6).should.be.false;
-    fn2(null).should.be.false;
-    fn2('').should.be.false;
-    fn2(undefined).should.be.false;
+    var fn = methods.length(5);
+    fn([1, "two", "3", 4]).should.be.false;
+    fn([1, 2, 3, 4, {name: "Terry"}]).should.be.true;
+    fn("egg").should.be.false;
+    fn("plant").should.be.true;
+    chai.assert(fn(undefined) === undefined);
+    chai.assert(fn('') === undefined);
+    chai.assert(fn(null) === undefined);
   });
 
   it('should validate the if a length of a string or array is equal to or greater than a value', function(){
