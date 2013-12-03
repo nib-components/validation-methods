@@ -16,7 +16,8 @@ var patterns = {
   alphanumeric: /^[A-Za-z0-9]+$/,
   hex: /^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/,
   dateofbirth: /^\d{1,2}\/\d{1,2}\/\d{4}$/,
-  numbersOnly: /^\d+$/
+  numbersOnly: /^\d+$/,
+  australianPhoneNumber: /^(0[2|3|7|8]{1}[3-9]{1}[0-9]{7}$)|(^[3|4|5|6|7|8|9]{1}[0-9]{7}$)|(^61[2|3|7|8]{1}[0-9]{8}$)|(^04[0-9]{8}$)/
 };
 
 /**
@@ -44,6 +45,7 @@ exports.equals = equals;
  * @return {Boolean}
  */
 exports.email = function(val) {
+  console.log(val);
   if(val) {
     return type(val) === 'string' && patterns.email.test(val);
   }
@@ -263,4 +265,15 @@ exports.matches = function(attr) {
  */
 exports.numbersOnly = function(val) {
   return patterns.numbersOnly.test(val);
+};
+
+/**
+ * Check if a string is an valid Australian phone number
+ * @param  {String}  val
+ * @return {Boolean}
+ */
+exports.australianPhoneNumber = function(val) {
+  if(val) {
+    return type(val) === 'string' && patterns.australianPhoneNumber.test(val);
+  }
 };

@@ -21,6 +21,8 @@ describe('Validation Methods', function(){
 
   it('should validate email', function(){
     methods.email('foo@mail.com').should.be.true;
+    methods.email('FOO@MAIL.COM.AU').should.be.true;
+    methods.email('F0O87@MaIL.com').should.be.true;
     methods.email('foo@mail').should.be.false;
     methods.email('foo').should.be.false;
     methods.email('foo@mail.co.uk').should.be.true;
@@ -214,5 +216,42 @@ describe('Validation Methods', function(){
     methods.numbersOnly('string').should.be.false;
     methods.numbersOnly('').should.be.false;
     methods.numbersOnly(undefined).should.be.false;
+  });
+
+  it('should validate an Australian phone number', function(){
+
+    // validate 49997878
+    methods.australianPhoneNumber('19996677').should.be.false;
+    methods.australianPhoneNumber('29996677').should.be.false;
+    methods.australianPhoneNumber('39996677').should.be.true;
+    methods.australianPhoneNumber('3999667').should.be.false;
+    methods.australianPhoneNumber('399966777').should.be.false;
+
+    // validate 0249997878
+    methods.australianPhoneNumber('0249996677').should.be.true;
+    methods.australianPhoneNumber('024999667').should.be.false;
+    methods.australianPhoneNumber('02499966777').should.be.false;
+    methods.australianPhoneNumber('0219996677').should.be.false;
+    methods.australianPhoneNumber('0229996677').should.be.false;
+    methods.australianPhoneNumber('0239996677').should.be.true;
+    methods.australianPhoneNumber('1219996677').should.be.false;
+    methods.australianPhoneNumber('4229996677').should.be.false;
+
+    // validate 61249997878
+    methods.australianPhoneNumber('61249996677').should.be.true;
+    methods.australianPhoneNumber('6124999667').should.be.false;
+    methods.australianPhoneNumber('612499966777').should.be.false;
+    methods.australianPhoneNumber('62249996677').should.be.false;
+    methods.australianPhoneNumber('71249996677').should.be.false;
+
+    // validate 0422999787
+    methods.australianPhoneNumber('0400222345').should.be.true;
+    methods.australianPhoneNumber('040022234').should.be.false;
+    methods.australianPhoneNumber('04002223444').should.be.false;
+    methods.australianPhoneNumber('1400222345').should.be.false;
+
+    chai.assert( methods.email('') === undefined);
+    chai.assert( methods.email(null) === undefined);
+    chai.assert( methods.email(undefined) === undefined);
   });
 });
