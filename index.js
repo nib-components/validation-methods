@@ -264,3 +264,17 @@ exports.matches = function(attr) {
 exports.numbersOnly = function(val) {
   return patterns.numbersOnly.test(val);
 };
+
+/**
+ * Check if a value matches a regular expression
+ * @param  {string} val
+ * @param  {RegExp} regex
+ * @return {Boolean}
+ */
+exports.matchesRegex = function(regex) {
+  return function(val, data) {
+    if(val) {
+      return regex.test(val);
+    }
+  };
+};
