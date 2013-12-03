@@ -218,6 +218,9 @@ describe('Validation Methods', function(){
     methods.numbersOnly(undefined).should.be.false;
   });
 
+  /**
+   * http://en.wikipedia.org/wiki/Telephone_numbers_in_Australia#Geographic_numbers_2
+   */
   it('should validate an Australian phone number', function(){
 
     // validate 49997878
