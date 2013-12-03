@@ -10,6 +10,7 @@ var equals = require('equals');
   elements so when we try to do validation via data
   attributes it will lowercase them.
  */
+
 var patterns = {
   email: /^([a-zA-Z0-9_\.\-\+]+)@([\da-zA-Z\.\-]+)\.([a-zA-Z\.]{2,6})$/,
   url: /^(https?:\/\/)?([\da-z\.\-]+)\.([a-z\.]{2,6})([\/\w \.\-]*)*\/?$/,
