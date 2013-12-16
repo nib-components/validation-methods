@@ -24,9 +24,9 @@ describe('Validation Methods', function(){
     methods.email('foo@mail').should.be.false;
     methods.email('foo').should.be.false;
     methods.email('foo@mail.co.uk').should.be.true;
-    chai.assert( methods.email('') === undefined);
-    chai.assert( methods.email(null) === undefined);
-    chai.assert( methods.email(undefined) === undefined);
+    chai.assert.isUndefined(methods.email(''));
+    chai.assert.isUndefined(methods.email(null));
+    chai.assert.isUndefined(methods.email(undefined));
   });
 
   it('should validate url', function(){
@@ -34,9 +34,9 @@ describe('Validation Methods', function(){
     methods.url('http://www.foo.com').should.be.true;
     methods.url('foo.com').should.be.true;
     methods.url('foo').should.be.false;
-    chai.assert( methods.url('') === undefined);
-    chai.assert( methods.url(null) === undefined);
-    chai.assert( methods.url(undefined) === undefined);
+    chai.assert.isUndefined(methods.url(''));
+    chai.assert.isUndefined(methods.url(null));
+    chai.assert.isUndefined(methods.url(undefined));
   });
 
   it('should validate alphanumeric', function(){
@@ -44,9 +44,9 @@ describe('Validation Methods', function(){
     methods.alphanumeric('1').should.be.true;
     methods.alphanumeric('_1').should.be.false;
     methods.alphanumeric(true).should.be.false;
-    chai.assert( methods.alphanumeric('') === undefined);
-    chai.assert( methods.alphanumeric(null) === undefined);
-    chai.assert( methods.alphanumeric(undefined) === undefined);
+    chai.assert.isUndefined(methods.alphanumeric(''));
+    chai.assert.isUndefined(methods.alphanumeric(null));
+    chai.assert.isUndefined(methods.alphanumeric(undefined));
   });
 
   it('should validate hex', function(){
@@ -60,18 +60,18 @@ describe('Validation Methods', function(){
     methods.hex('#ggg').should.be.false;
     methods.hex(1).should.be.false;
     methods.hex(111111).should.be.false;
-    chai.assert( methods.hex('') === undefined);
-    chai.assert( methods.hex(null) === undefined);
-    chai.assert( methods.hex(undefined) === undefined);
+    chai.assert.isUndefined(methods.hex(''));
+    chai.assert.isUndefined(methods.hex(null));
+    chai.assert.isUndefined(methods.hex(undefined));
   });
 
   it('should validate strings', function(){
     methods.string('1').should.be.true;
     methods.string(1).should.be.false;
     methods.string(true).should.be.false;
-    chai.assert( methods.string('') === undefined);
-    chai.assert( methods.string(null) === undefined);
-    chai.assert( methods.string(undefined) === undefined);
+    chai.assert.isUndefined(methods.string(''));
+    chai.assert.isUndefined(methods.string(null));
+    chai.assert.isUndefined(methods.string(undefined));
   });
 
   it('should validate a number', function(){
@@ -79,9 +79,9 @@ describe('Validation Methods', function(){
     methods.number('1').should.be.true;
     methods.number(1).should.be.true;
     methods.number(true).should.be.false;
-    chai.assert( methods.number('') === undefined);
-    chai.assert( methods.number(null) === undefined);
-    chai.assert( methods.number(undefined) === undefined);
+    chai.assert.isUndefined(methods.number(''));
+    chai.assert.isUndefined(methods.number(null));
+    chai.assert.isUndefined(methods.number(undefined));
   });
 
   it('should validate an array', function(){
@@ -89,18 +89,18 @@ describe('Validation Methods', function(){
     methods.array('1').should.be.false;
     methods.array(1).should.be.false;
     methods.array(true).should.be.false;
-    chai.assert( methods.array('') === undefined);
-    chai.assert( methods.array(null) === undefined);
-    chai.assert( methods.array(undefined) === undefined);
+    chai.assert.isUndefined(methods.array(''));
+    chai.assert.isUndefined(methods.array(null));
+    chai.assert.isUndefined(methods.array(undefined));
   });
 
   it('should validate a date', function(){
     methods.date(new Date()).should.be.true;
     methods.date('12th June').should.be.false;
     methods.date(12).should.be.true;
-    chai.assert( methods.date('') === undefined);
-    chai.assert( methods.date(null) === undefined);
-    chai.assert( methods.date(undefined) === undefined);
+    chai.assert.isUndefined(methods.date(''));
+    chai.assert.isUndefined(methods.date(null));
+    chai.assert.isUndefined(methods.date(undefined));
   });
 
   it('should validate a boolean', function(){
@@ -109,8 +109,8 @@ describe('Validation Methods', function(){
     methods.boolean('1').should.be.false;
     methods.boolean('').should.be.false;
     methods.boolean(12).should.be.false;
-    chai.assert( methods.boolean(null) === undefined);
-    chai.assert( methods.boolean(undefined) === undefined);
+    chai.assert.isUndefined(methods.boolean(null));
+    chai.assert.isUndefined(methods.boolean(undefined));
   });
 
   it('should validate if one value is below another value', function(){
@@ -122,9 +122,9 @@ describe('Validation Methods', function(){
     fn2(6).should.be.true;
     fn2(5).should.be.true;
     fn2(4).should.be.false;
-    chai.assert(fn2(undefined) === undefined);
-    chai.assert(fn2('') === undefined);
-    chai.assert(fn2(null) === undefined);
+    chai.assert.isUndefined(fn2(''));
+    chai.assert.isUndefined(fn2(null));
+    chai.assert.isUndefined(fn2(undefined));
   });
 
   it('should validate if one value is a at least another value', function(){
@@ -134,9 +134,9 @@ describe('Validation Methods', function(){
     fn1(6).should.be.false;
     fn2(5).should.be.true;
     fn2(6).should.be.false;
-    chai.assert(fn2(undefined) === undefined);
-    chai.assert(fn2('') === undefined);
-    chai.assert(fn2(null) === undefined);
+    chai.assert.isUndefined(fn2(''));
+    chai.assert.isUndefined(fn2(null));
+    chai.assert.isUndefined(fn2(undefined));
   });
 
   it('should validate the length of a string or array', function(){
@@ -145,9 +145,9 @@ describe('Validation Methods', function(){
     fn([1, 2, 3, 4, {name: "Terry"}]).should.be.true;
     fn("egg").should.be.false;
     fn("plant").should.be.true;
-    chai.assert(fn(undefined) === undefined);
-    chai.assert(fn('') === undefined);
-    chai.assert(fn(null) === undefined);
+    chai.assert.isUndefined(fn(''));
+    chai.assert.isUndefined(fn(null));
+    chai.assert.isUndefined(fn(undefined));
   });
 
   it('should validate the if a length of a string or array is equal to or greater than a value', function(){
@@ -156,9 +156,9 @@ describe('Validation Methods', function(){
     fn([1]).should.be.false;
     fn("string").should.be.true;
     fn("one").should.be.false;
-    chai.assert(fn(undefined) === undefined);
-    chai.assert(fn('') === undefined);
-    chai.assert(fn(null) === undefined);
+    chai.assert.isUndefined(fn(''));
+    chai.assert.isUndefined(fn(null));
+    chai.assert.isUndefined(fn(undefined));
   });
 
   it('should validate the if a length of a string or array is equal to or less than a value', function(){
@@ -167,9 +167,9 @@ describe('Validation Methods', function(){
     fn(new Array(7)).should.be.false;
     fn("string").should.be.true;
     fn("eggplant").should.be.false;
-    chai.assert(fn(undefined) === undefined);
-    chai.assert(fn('') === undefined);
-    chai.assert(fn(null) === undefined);
+    chai.assert.isUndefined(fn(''));
+    chai.assert.isUndefined(fn(null));
+    chai.assert.isUndefined(fn(undefined));
   });
 
   it('should validate the if string or number is within range of a value', function(){
@@ -179,9 +179,9 @@ describe('Validation Methods', function(){
     fn("6").should.be.true;
     fn("7").should.be.false;
     fn("six").should.be.false;
-    chai.assert(fn(undefined) === undefined);
-    chai.assert(fn('') === undefined);
-    chai.assert(fn(null) === undefined);
+    chai.assert.isUndefined(fn(''));
+    chai.assert.isUndefined(fn(null));
+    chai.assert.isUndefined(fn(undefined));
   });
 
   it('should validate the if a value is found in an array', function(){
@@ -193,9 +193,9 @@ describe('Validation Methods', function(){
     fn2(1).should.be.false;
     fn2("one").should.be.true;
     fn2(4).should.be.false;
-    chai.assert(fn2(undefined) === undefined);
-    chai.assert(fn2('') === undefined);
-    chai.assert(fn2(null) === undefined);
+    chai.assert.isUndefined(fn2(''));
+    chai.assert.isUndefined(fn2(null));
+    chai.assert.isUndefined(fn2(undefined));
   });
 
   it('should validate the if a value matches another value', function(){
