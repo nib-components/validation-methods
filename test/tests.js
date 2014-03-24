@@ -199,12 +199,17 @@ describe('Validation Methods', function(){
   });
 
   it('should validate the if a value matches another value', function(){
-    var fn = methods.matches('foo');
-    fn('bar', { foo: 'bar' }).should.be.true;
-    fn('bar', { foo: 'foo' }).should.be.false;
-    fn(null, { foo: 'bar' }).should.be.false;
-    fn('', { foo: 'bar' }).should.be.false;
-    fn(undefined, { foo: 'bar' }).should.be.false;
+    // model
+    var data = {
+      NewPassword: 'eggplant' // < the value we're comparing to
+    };
+
+    var fn = methods.matches('NewPassword');
+    fn('eggplant', data).should.be.true;
+    fn('celery', data).should.be.false;
+    fn(null, data).should.be.false;
+    fn('', data).should.be.false;
+    fn(undefined, data).should.be.false;
   });
 
   it('should validate if a value is made up of only numbers or not', function(){

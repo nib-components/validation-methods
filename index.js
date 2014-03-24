@@ -245,9 +245,9 @@ exports['in'] = function(values) {
 
 /**
  * Check if one field matches another
- * @param  {String} Value of field
- * @param  {String} field Field to match
- * @param   {Object} attributes All of the data
+ * @param attr {String} - name of field to validate - e.g "ConfirmNewPassword"
+ * @param val {String} input value of field to compare match - e.g data.NewPassword
+ * @param data {Object} the whole data object (model)
  * @return {Boolean}
  */
 exports.matches = function(attr) {
