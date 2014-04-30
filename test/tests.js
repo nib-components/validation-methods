@@ -1,7 +1,8 @@
+var methods = require('validation-methods');
+var chai = require('chai');
+chai.should();
+
 describe('Validation Methods', function(){
-  var methods = require('validation-methods');
-  var chai = require('chai');
-  chai.should();
 
   it('should validate required', function(){
     methods.required('').should.be.false;
@@ -220,4 +221,24 @@ describe('Validation Methods', function(){
     methods.numbersOnly('').should.be.false;
     methods.numbersOnly(undefined).should.be.false;
   });
+});
+
+describe('regex method', function(){
+
+  it ('should validate a RegExp pattern', function() {
+    var fn = methods.regex(/^JS|CSS|HTML$/);
+    fn('JS').should.be.true;
+    fn('CSS').should.be.true;
+    fn('HTML').should.be.true;
+    fn('PHP').should.be.false;
+  });
+
+  it('should validate a string pattern', function() {
+    var fn = methods.regex('^JS|CSS|HTML$');
+    fn('JS').should.be.true;
+    fn('CSS').should.be.true;
+    fn('HTML').should.be.true;
+    fn('PHP').should.be.false;
+  });
+
 });
