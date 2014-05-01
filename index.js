@@ -194,7 +194,7 @@ exports.length = function(length) {
  * @return {Boolean}
  */
 exports.minlength = function(length) {
-  return function(val, data) {
+  return function(val) {
     if(val) {
       return val && val.length && val.length >= length;
     }
@@ -208,7 +208,7 @@ exports.minlength = function(length) {
  * @return {Boolean}
  */
 exports.maxlength = function(length) {
-  return function(val, data) {
+  return function(val) {
     if(val) {
       return val && val.length && val.length <= length;
     }
