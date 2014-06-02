@@ -11,7 +11,7 @@ var equals = require('equals');
   attributes it will lowercase them.
  */
 var patterns = {
-  email: /^([a-zA-Z0-9_\.\-\+!$%&'*\/=?^`{|}~#]+)@([\da-zA-Z\.\-]+)\.([a-zA-Z\.]{2,6})$/,
+  email: /^([a-zA-Z0-9_\.\-\+!\$%&'*\/=?\^`{|}~#]+)@([\da-zA-Z\.\-]+)\.([a-zA-Z\.]{2,6})$/,
   url: /^(https?:\/\/)?([\da-z\.\-]+)\.([a-z\.]{2,6})([\/\w \.\-]*)*\/?$/,
   alphanumeric: /^[A-Za-z0-9]+$/,
   hex: /^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/,
@@ -44,8 +44,21 @@ exports.equals = equals;
  * @return {Boolean}
  */
 exports.email = function(val) {
-  if(val) {
-    return type(val) === 'string' && patterns.email.test(val);
+  if(val && type(val) === 'string') {
+
+    //check the email matches the regex
+    var result = patterns.email.exec(val);
+    if (result === null) {
+      return false;
+    }
+
+    //check the local part doesn't start or end with a fullstop or contain two consecuative fullstops
+    var localPart = result[1];
+    if (localPart.charAt(0) === '.' || localPart.charAt(localPart.length-1) === '.' || localPart.indexOf('..') !== -1) {
+      return false;
+    }
+
+    return true;
   }
 };
 

@@ -35,7 +35,12 @@ describe('Validation Methods', function(){
     methods.email('ABCDEFGHIJKLMNOPQRSTUVWXYZ@example.com').should.be.true;
     methods.email('0123456789@example.com').should.be.true;
     methods.email('!#$%&\'*+-/=?^_`{|}~@example.com').should.be.true;
-
+    methods.email('john@me@example.com').should.be.false;
+    methods.email('john@').should.be.false;
+    methods.email('@example.com').should.be.false;
+    methods.email('.john@example.com').should.be.false;
+    methods.email('john.@example.com').should.be.false;
+    methods.email('john..smith@example.com').should.be.false;
     chai.assert.isUndefined(methods.email(''));
     chai.assert.isUndefined(methods.email(null));
     chai.assert.isUndefined(methods.email(undefined));
