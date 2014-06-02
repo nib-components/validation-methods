@@ -109,7 +109,7 @@ describe('Validation Methods', function(){
   it('should validate a date', function(){
     methods.date(new Date()).should.be.true;
     methods.date('12th June').should.be.false;
-    methods.date(12).should.be.true;
+    methods.date(12).should.be.false;
     chai.assert.isUndefined(methods.date(''));
     chai.assert.isUndefined(methods.date(null));
     chai.assert.isUndefined(methods.date(undefined));
