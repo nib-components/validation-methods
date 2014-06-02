@@ -11,7 +11,7 @@ var equals = require('equals');
   attributes it will lowercase them.
  */
 var patterns = {
-  email: /^([a-zA-Z0-9_\.\-\+]+)@([\da-zA-Z\.\-]+)\.([a-zA-Z\.]{2,6})$/,
+  email: /^([a-zA-Z0-9_\.\-\+!$%&'*\/=?^`{|}~#]+)@([\da-zA-Z\.\-]+)\.([a-zA-Z\.]{2,6})$/,
   url: /^(https?:\/\/)?([\da-z\.\-]+)\.([a-z\.]{2,6})([\/\w \.\-]*)*\/?$/,
   alphanumeric: /^[A-Za-z0-9]+$/,
   hex: /^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/,
