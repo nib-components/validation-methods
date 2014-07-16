@@ -9,7 +9,9 @@
     "jkroso/equals": "0.3.2"
   },
   "development": {
-    "chaijs/chai": "*"
+    "dependencies": {
+      "chaijs/chai": "*"
+    }
   },
   "license": "MIT",
   "main": "index.js",
