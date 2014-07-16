@@ -118,6 +118,7 @@ describe('Validation Methods', function(){
     chai.assert.isUndefined(methods.date(''));
     chai.assert.isUndefined(methods.date(null));
     chai.assert.isUndefined(methods.date(undefined));
+
   });
 
   it('should validate a boolean', function(){

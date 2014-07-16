@@ -15,9 +15,10 @@ var patterns = {
   url: /^(https?:\/\/)?([\da-z\.\-]+)\.([a-z\.]{2,6})([\/\w \.\-]*)*\/?$/,
   alphanumeric: /^[A-Za-z0-9]+$/,
   hex: /^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/,
-  dateofbirth: /^\d{1,2}\/\d{1,2}\/\d{4}$/,
-  numbersOnly: /^\d+$/
+  dateofbirth: /^\d{1,2}\/\d{1,2}\/\d{4}$/
 };
+
+exports.REGEX_DIGITS = /^\d+$/;
 
 /**
  * Simple required method. We add this as a validation
@@ -274,9 +275,16 @@ exports.matches = function(attr) {
  * @param  {string} val
  * @return {boolean} return true if value is made up of numbers
  */
-exports.numbersOnly = function(val) {
-  return patterns.numbersOnly.test(val);
+exports.digits = function(val) {
+
+  if (typeof val === 'number') {
+    return true;
+  }
+
+  return exports.regex(exports.REGEX_DIGITS)(val);
 };
+exports.numbersOnly = exports.digits;
+
 
 /**
  * Check if a value matches the pattern
@@ -292,6 +300,8 @@ exports.regex = function(pattern) {
   return function(val) {
     if(val){
       return type(val) === 'string' && pattern.test(val);
+    } else {
+      return false;
     }
   };
 
