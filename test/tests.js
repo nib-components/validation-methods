@@ -259,3 +259,16 @@ describe('regex method', function(){
   });
 
 });
+
+describe('getInvalidCharacters', function(){
+
+  it('should get the invalid characters', function() {
+    var chars = methods.getInvalidCharacters(methods.REGEX_DIGITS, 'a0-123@$A');
+    chars[0].should.be.equal('a');
+    chars[1].should.be.equal('-');
+    chars[2].should.be.equal('@');
+    chars[3].should.be.equal('$');
+    chars[4].should.be.equal('A');
+  });
+
+});

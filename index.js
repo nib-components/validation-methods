@@ -306,3 +306,20 @@ exports.regex = function(pattern) {
   };
 
 };
+
+/**
+ * Get the characters that were not permitted by the regexp pattern
+ * @param   {RegExp}  regex
+ * @param   {String}  value
+ * @returns {String}
+ */
+exports.getInvalidCharacters = function(regex, value) {
+  var invalidCharacters = [];
+  for (var i = 0; i < value.length; ++i) {
+    var char = value.charAt(i);
+    if (!regex.test(char) && invalidCharacters.indexOf(char) === -1) {
+      invalidCharacters.push(char);
+    }
+  }
+  return invalidCharacters;
+};
