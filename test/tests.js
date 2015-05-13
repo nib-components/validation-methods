@@ -1,4 +1,4 @@
-var methods = require('validation-methods');
+var methods = require('..');
 var chai = require('chai');
 chai.should();
 

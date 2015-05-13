@@ -1,0 +1,30 @@
+{
+  "name": "@nib/validation-methods",
+  "description": "Various methods for validating objects",
+  "keywords": [
+    "browser",
+    "validator",
+    "validation",
+    "required",
+    "email"
+  ],
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:nib-components/validation-methods.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nib-components/validation-methods/issues"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^2.3.0"
+  },
+  "dependencies": {
+    "component-type": "^1.1.0",
+    "equals": "^1.0.0"
+  },
+  "browser": {
+    "type": "component-type"
+  }
+}
