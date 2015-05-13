@@ -4,7 +4,7 @@ node_js:
   - 0.10
 
 install:
-  - npm install mochaify
+  - npm install mochify
 
 script:
-  - node node_modules/.bin/mochaify
+  - node node_modules/.bin/mochify
