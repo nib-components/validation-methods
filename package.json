@@ -11,10 +11,10 @@
   "version": "1.1.0",
   "repository": {
     "type": "git",
-    "url": "git@github.com:nib-components/validation-methods.git"
+    "url": "git@github.com:nib-health-funds/validation-methods.git"
   },
   "bugs": {
-    "url": "https://github.com/nib-components/validation-methods/issues"
+    "url": "https://github.com/nib-health-funds/validation-methods/issues"
   },
   "license": "MIT",
   "devDependencies": {
