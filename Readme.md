@@ -1,12 +1,11 @@
 # validation-methods
 
-[![Build Status](https://travis-ci.org/nib-components/validation-methods.png?branch=master)](https://travis-ci.org/nib-components/validation-methods)
+[![Build Status](https://travis-ci.org/nib-health-funds/validation-methods.png?branch=master)](https://travis-ci.org/nib-components/validation-methods)
 
   Various methods for validating objects
 
 ## Installation
-
-    $ component install nib-components/validation-methods
+    $ npm i @nib/validation-methods
 
 ## API
 
