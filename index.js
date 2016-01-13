@@ -250,7 +250,7 @@ exports.range = function(from, to) {
  * @return {Boolean}
  */
 exports['in'] = function(values) {
-  return function(val, data) {
+  return function(val) {
     if(val) {
       return values.indexOf(val) > -1;
     }
