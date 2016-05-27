@@ -216,6 +216,18 @@ describe('Validation Methods', function(){
     chai.assert.isUndefined(fn2(undefined));
   });
 
+  it.only('should validate the if ALL of the values within an array are found in another array', function(){
+    var arrayContaining = methods.arrayContaining([1,2,3]);
+    arrayContaining([1]).should.be.true;
+    arrayContaining([2,1]).should.be.true;
+    arrayContaining([3,1,2]).should.be.true;
+    arrayContaining([3,1,2,4]).should.be.false;
+    arrayContaining([3,0,2]).should.be.false;
+    arrayContaining([0]).should.be.false;
+    arrayContaining(3).should.be.false;
+    arrayContaining("[1,2,3]").should.be.false;
+  });
+
   it('should validate the if a value matches another value', function(){
     // model
     var data = {
