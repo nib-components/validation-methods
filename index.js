@@ -140,10 +140,10 @@ exports.array = function(val) {
  * @param  {Array} arrayOfAcceptedValues
  * @return {Function}
  */
-exports.arrayContaining = function(arrayOfAcceptedValues) {
+exports.isSubsetOf = function(arrayOfAcceptedValues) {
     return function(val) {
       var bool = true;
-      if(val && val instanceof Array) {
+      if(val && Array.isArray(val)) {
         val.forEach(value => {
           if (arrayOfAcceptedValues.indexOf(value) === -1) {
             bool = false
