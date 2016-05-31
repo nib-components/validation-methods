@@ -216,6 +216,18 @@ describe('Validation Methods', function(){
     chai.assert.isUndefined(fn2(undefined));
   });
 
+  it('should validate the if ALL of the values within an array are found in another array', function(){
+    var validateSubsetOf = methods.isSubsetOf([1,2,3]);
+    validateSubsetOf([1]).should.be.true;
+    validateSubsetOf([2,1]).should.be.true;
+    validateSubsetOf([3,1,2]).should.be.true;
+    validateSubsetOf([3,1,2,4]).should.be.false;
+    validateSubsetOf([3,0,2]).should.be.false;
+    validateSubsetOf([0]).should.be.false;
+    validateSubsetOf(3).should.be.false;
+    validateSubsetOf("[1,2,3]").should.be.false;
+  });
+
   it('should validate the if a value matches another value', function(){
     // model
     var data = {

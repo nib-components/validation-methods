@@ -136,6 +136,27 @@ exports.array = function(val) {
 };
 
 /**
+ * Check if an array contains only items from another array
+ * @param  {Array} arrayOfAcceptedValues
+ * @return {Function}
+ */
+exports.isSubsetOf = function(arrayOfAcceptedValues) {
+    return function(val) {
+      var bool = true;
+      if(val && Array.isArray(val)) {
+        val.forEach(value => {
+          if (arrayOfAcceptedValues.indexOf(value) === -1) {
+            bool = false
+          }
+        });
+      } else {
+        return false;
+      }
+      return bool;
+    };
+};
+
+/**
  * Check if passed in value is, or can be converted
  * to, a valid date
  * @param  {Any} val
@@ -245,7 +266,6 @@ exports.range = function(from, to) {
 
 /**
  * Check if a value exists within an array
- * @param  {Any} val
  * @param  {Array} values
  * @return {Boolean}
  */
