@@ -16,6 +16,12 @@
     methods.string(1); // false;
     methods.number('string'); // false
 
+### Validating array contents
+    var validateSubsetOf = methods.isSubsetOf([1,2,3]);
+    validateSubsetOf([1]); // true
+    validateSubsetOf([1,3]); // true
+    validateSubsetOf([1,5]); // false
+
 ## License
 
   MIT
