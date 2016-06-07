@@ -1,5 +1,6 @@
 {
   "name": "@nib/validation-methods",
+  "version": "1.2.1",
   "description": "Various methods for validating objects",
   "keywords": [
     "browser",
@@ -8,7 +9,6 @@
     "required",
     "email"
   ],
-  "version": "1.2.0",
   "repository": {
     "type": "git",
     "url": "git@github.com:nib-health-funds/validation-methods.git"

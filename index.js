@@ -144,7 +144,7 @@ exports.isSubsetOf = function(arrayOfAcceptedValues) {
     return function(val) {
       var bool = true;
       if(val && Array.isArray(val)) {
-        val.forEach(value => {
+        val.forEach(function(value) {
           if (arrayOfAcceptedValues.indexOf(value) === -1) {
             bool = false
           }
